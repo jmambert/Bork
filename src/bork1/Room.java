@@ -1,6 +1,9 @@
 
 package bork1;
 
+/*
+Room @throws NoRoomException, reads through the file 
+*/
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
@@ -39,6 +42,7 @@ public class Room {
         is now positioned one line past where it was.
         @throws IllegalDungeonFormatException A structural problem with the
         dungeon file itself, detected when trying to read this room.
+        * @author not jmambert
      */
     Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {

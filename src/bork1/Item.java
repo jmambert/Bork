@@ -1,11 +1,16 @@
 
 package bork1;
 
+/*
+Item class creates a hashtable to hold all of the messages for each item in the dungeon
+@throws NoItemException
+@author jmambert
+*/
 import java.util.Scanner;
 import java.util.Hashtable;
 
 public class Item {
-
+    
     static class NoItemException extends Exception {}
 
     private String primaryName;
@@ -41,17 +46,38 @@ public class Item {
         }
     }
 
+    /*
+    Has an @param of a string called name
+    returns the primary name of the string it is passed
+    @author jmambert
+    */
     boolean goesBy(String name) {
         // could have other aliases
         return this.primaryName.equals(name);
     }
 
-    String getPrimaryName() { return primaryName; }
+    /*
+    returns the primaryName
+    @author jmambert
+    */
+    String getPrimaryName() { 
+        return primaryName; 
+    }
 
+    /*
+    getMessageForVerb @param string called verb
+    gets the accompanying message for the verb the user entered
+    returns message
+    @author jmambert
+    */
     public String getMessageForVerb(String verb) {
         return messages.get(verb);
     }
 
+    /*
+    toString returns the primaryName of an item when called upon
+    @author jmambert
+    */
     public String toString() {
         return primaryName;
     }

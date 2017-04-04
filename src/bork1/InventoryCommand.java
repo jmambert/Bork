@@ -1,6 +1,10 @@
 
 package bork1;
 
+/*
+InventoryCommand extends Command class and prints to the screen what is in the
+    user's inventory if any
+*/
 import java.util.ArrayList;
 
 class InventoryCommand extends Command {

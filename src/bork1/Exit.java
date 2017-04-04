@@ -1,6 +1,9 @@
 
 package bork1;
 
+/*
+Exit
+*/
 import java.util.Scanner;
 
 public class Exit {
@@ -10,6 +13,10 @@ public class Exit {
     private String dir;
     private Room src, dest;
 
+    /*
+    Exit is passed a @param string, and @param 2 rooms
+    @author jmambert
+    */
     Exit(String dir, Room src, Room dest) {
         init();
         this.dir = dir;
@@ -27,6 +34,7 @@ public class Exit {
         is now positioned one line past where it was.
         @throws IllegalDungeonFormatException A structural problem with the
         dungeon file itself, detected when trying to read this room.
+        * @author not jmambert
      */
     Exit(Scanner s, Dungeon d) throws NoExitException,
         Dungeon.IllegalDungeonFormatException {
@@ -55,6 +63,10 @@ public class Exit {
     private void init() {
     }
 
+    /*
+    describe() lets the user know the possible exits they may leave by
+    @author jmambert
+    */
     String describe() {
         return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
