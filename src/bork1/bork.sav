@@ -1,0 +1,28 @@
+Bork v3.0 save data
+Dungeon file: dungeon.bork
+Room states:
+Stephen's office:
+beenHere=true
+Contents: StarWarsToy,WawaTravelMug
+---
+Room B6:
+beenHere=true
+---
+Basement hallway:
+beenHere=true
+---
+Room B13:
+beenHere=true
+Contents: bomb
+---
+Rotunda balcony:
+beenHere=true
+Contents: chainsaw
+---
+Rotunda:
+beenHere=true
+---
+===
+Adventurer:
+Current room: Room B13
+Inventory: magicWand,DrPepper,donut

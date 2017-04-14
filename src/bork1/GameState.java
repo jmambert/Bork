@@ -29,6 +29,10 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
+    private int health;
+    private int totalHealth;
+    private int score;
+    private int gamesState; //win = 3, lose = 2, play = 1
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -105,6 +109,7 @@ public class GameState {
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
+        gamesState = 1;
     }
 
     ArrayList<String> getInventoryNames() {
@@ -162,6 +167,22 @@ public class GameState {
 
     Dungeon getDungeon() {
         return dungeon;
+    }
+    
+    int getHealth() {
+        return health;
+    }
+    
+    int getTotalHealth() {
+        return totalHealth;
+    }
+    
+    int getScore() {
+        return score;
+    }
+    
+    int getGamesState() {
+        return gamesState;
     }
 
 }

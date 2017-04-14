@@ -20,6 +20,7 @@ public class Room {
     private boolean beenHere;
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
+    private boolean locked;
 
     Room(String title) {
         init();

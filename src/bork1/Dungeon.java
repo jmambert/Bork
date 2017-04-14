@@ -183,4 +183,8 @@ public class Dungeon {
         }
         return items.get(primaryItemName);
     }
+    
+    public Hashtable getHashtableRooms() {
+        return rooms;
+    }
 }

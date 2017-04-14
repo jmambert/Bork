@@ -42,7 +42,7 @@ public class Interpreter {
 
             command = promptUser(commandLine);
 
-            while (!command.equals("q")) {
+            while (((!command.equals("q")) && (GameState.instance().getGamesState() == 1))) {
 
                 System.out.print(
                     CommandFactory.instance().parse(command).execute());

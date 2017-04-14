@@ -24,23 +24,32 @@ public class CommandFactory {
         String parts[] = command.split(" ");
         String verb = parts[0];
         String noun = parts.length >= 2 ? parts[1] : "";
-        if (verb.equals("save")) {
+        if (verb.toLowerCase().equals("save")) {
             return new SaveCommand(noun);
         }
-        if (verb.equals("take")) {
+        else if (verb.toLowerCase().equals("take")) {
             return new TakeCommand(noun);
         }
-        if (verb.equals("drop")) {
+        else if (verb.toLowerCase().equals("drop")) {
             return new DropCommand(noun);
         }
-        if (verb.equals("i") || verb.equals("inventory")) {
+        else if (verb.toLowerCase().equals("i") || verb.equals("inventory")) {
             return new InventoryCommand();
         }
-        if (MOVEMENT_COMMANDS.contains(verb)) {
+        else if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }
-        if (parts.length == 2) {
+        else if (parts.length == 2) {
             return new ItemSpecificCommand(verb, noun);
+        }
+        else if (verb.toLowerCase().equals("score")) {
+            return new ScoreCommand();
+        }
+        else if (verb.toLowerCase().equals("health")) {
+            return new HealthCommand();
+        }
+        else if (verb.toLowerCase().equals("on")) {
+            return new VerboseCommand();
         }
         return new UnknownCommand(command);
     }
