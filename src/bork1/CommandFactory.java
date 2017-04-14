@@ -51,7 +51,7 @@ public class CommandFactory {
         else if (verb.toLowerCase().contains("verbose")) {
             return new VerboseCommand(parts[1]);
             
-        //else if (verb.toLowerCase().contains("verbose on")) {
+        //else if (verb.toLowerCase().contains("")) {
             //return new VerboseCommand();
         }
         return new UnknownCommand(command);

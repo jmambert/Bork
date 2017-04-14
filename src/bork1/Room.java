@@ -178,6 +178,16 @@ public class Room {
     void addExit(Exit exit) {
         exits.add(exit);
     }
+    
+    Exit getExit(String exitName) {
+        for(int i=0; i<exits.size();i++){
+            if (exits.get(i).toString().equals(exitName)){
+                return exits.get(i);
+            }
+        }
+        
+        return null;
+    }
 
     void add(Item item) {
         contents.add(item);

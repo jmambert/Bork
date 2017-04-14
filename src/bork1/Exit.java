@@ -12,16 +12,18 @@ public class Exit {
 
     private String dir;
     private Room src, dest;
+    private Boolean locked;
 
     /*
     Exit is passed a @param string, and @param 2 rooms
     @author jmambert
     */
-    Exit(String dir, Room src, Room dest) {
+    Exit(String dir, Room src, Room dest, Boolean locked) {
         init();
         this.dir = dir;
         this.src = src;
         this.dest = dest;
+        this.locked = locked;
         src.addExit(this);
     }
 
@@ -74,4 +76,12 @@ public class Exit {
     String getDir() { return dir; }
     Room getSrc() { return src; }
     Room getDest() { return dest; }
+    
+    void setLockState(Boolean setLock){
+        if(setLock == true) {
+            locked = true;
+        }else{
+            locked = false;
+        }
+    }
 }
