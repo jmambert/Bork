@@ -33,6 +33,7 @@ public class GameState {
     private int totalHealth;
     private int score;
     private int gamesState; //win = 3, lose = 2, play = 1
+    private boolean verbose;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -110,6 +111,7 @@ public class GameState {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
         gamesState = 1;
+        verbose = true;
     }
 
     ArrayList<String> getInventoryNames() {
@@ -183,6 +185,18 @@ public class GameState {
     
     int getGamesState() {
         return gamesState;
+    }
+    
+    boolean getVerboseState() {
+        return verbose;
+    }
+    
+    void setVerboseState(Boolean setB) {
+        if(setB == true) {
+            verbose = true;
+        }else{
+            verbose = false;
+        }
     }
 
 }

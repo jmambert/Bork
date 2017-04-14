@@ -6,7 +6,8 @@
 package bork1;
 /**
  *
- * @author Jordan
+ * @author llopez4
+ * Teleports the player to a specific room
  */
 class SpecificTeleportEvent extends Event {
     private String roomname;

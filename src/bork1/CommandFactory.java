@@ -24,6 +24,7 @@ public class CommandFactory {
         String parts[] = command.split(" ");
         String verb = parts[0];
         String noun = parts.length >= 2 ? parts[1] : "";
+        String wordV = ;
         if (verb.toLowerCase().equals("save")) {
             return new SaveCommand(noun);
         }
@@ -48,8 +49,11 @@ public class CommandFactory {
         else if (verb.toLowerCase().equals("health")) {
             return new HealthCommand();
         }
-        else if (verb.toLowerCase().equals("on")) {
-            return new VerboseCommand();
+        else if (verb.toLowerCase().contains("verbose")) {
+            return new VerboseCommand(wordV);
+            
+        //else if (verb.toLowerCase().contains("verbose on")) {
+            //return new VerboseCommand();
         }
         return new UnknownCommand(command);
     }

@@ -10,13 +10,29 @@ package bork1;
  * @author Jordan
  */
 class VerboseCommand extends Command {
+    boolean verbose;
     
-    VerboseCommand() {
+    VerboseCommand(String verb) {
+        this.verbose = verbose;
         
     }
     
     public String execute() {
-        return "Verbose";
+        /*if (verbose == "on") {
+            
+        }
+        /*if(GameState.instance().getVerboseState() == true){
+            GameState.instance().setVerboseState(false);
+        }else{
+            GameState.instance().setVerboseState(true);
+        }
+        String onOff = "";
+        if(verbose == true) {
+            onOff = "On";
+        }else{
+            onOff = "Off";
+        } */
+        return "Verbose mode is now .";
     }
     
 }
