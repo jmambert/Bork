@@ -7,32 +7,28 @@ package bork1;
 
 /**
  *
- * @author Jordan
+ * @author Jordan, Leonard
  */
 class VerboseCommand extends Command {
-    boolean verbose;
+    String verbose;
     
     VerboseCommand(String verb) {
-        this.verbose = verbose;
+        this.verbose = verb;
         
     }
     
     public String execute() {
-        /*if (verbose == "on") {
-            
-        }
-        /*if(GameState.instance().getVerboseState() == true){
-            GameState.instance().setVerboseState(false);
-        }else{
+        if(verbose.toLowerCase().equals("on")){
             GameState.instance().setVerboseState(true);
+            return "Verbose mode is on";
         }
-        String onOff = "";
-        if(verbose == true) {
-            onOff = "On";
-        }else{
-            onOff = "Off";
-        } */
-        return "Verbose mode is now .";
+        if(verbose.toLowerCase().equals("off")){
+            GameState.instance().setVerboseState(false);
+            return "Verbose mode is off";
+        }
+        else{
+            return "Bad use of verbose mode";
+        }
     }
     
 }
