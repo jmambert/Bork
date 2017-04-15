@@ -1,4 +1,3 @@
-
 package bork1;
 
 import java.util.Scanner;
@@ -12,6 +11,7 @@ import java.io.PrintWriter;
 public class GameState {
 
     public static class IllegalSaveFormatException extends Exception {
+
         public IllegalSaveFormatException(String e) {
             super(e);
         }
@@ -34,6 +34,8 @@ public class GameState {
     private int score;
     private int gamesState; //win = 3, lose = 2, play = 1
     private boolean verbose;
+    //private ArrayList<Room> darkRooms; //delete?
+    private boolean isLit = true;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -47,7 +49,7 @@ public class GameState {
     }
 
     void restore(String filename) throws FileNotFoundException,
-        IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
+            IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
         Scanner s = new Scanner(new FileReader(filename));
 
@@ -58,29 +60,29 @@ public class GameState {
         String dungeonFileLine = s.nextLine();
 
         if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
-            throw new IllegalSaveFormatException("No '" +
-                Dungeon.FILENAME_LEADER + 
-                "' after version indicator.");
+            throw new IllegalSaveFormatException("No '"
+                    + Dungeon.FILENAME_LEADER
+                    + "' after version indicator.");
         }
 
         dungeon = new Dungeon(dungeonFileLine.substring(
-            Dungeon.FILENAME_LEADER.length()), false);
+                Dungeon.FILENAME_LEADER.length()), false);
         dungeon.restoreState(s);
 
         s.nextLine();  // Throw away "Adventurer:".
         String currentRoomLine = s.nextLine();
         adventurersCurrentRoom = dungeon.getRoom(
-            currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+                currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
         if (s.hasNext()) {
             String inventoryList = s.nextLine().substring(
-                INVENTORY_LEADER.length());
+                    INVENTORY_LEADER.length());
             String[] inventoryItems = inventoryList.split(",");
             for (String itemName : inventoryItems) {
                 try {
                     addToInventory(dungeon.getItem(itemName));
                 } catch (Item.NoItemException e) {
-                    throw new IllegalSaveFormatException("No such item '" +
-                        itemName + "'");
+                    throw new IllegalSaveFormatException("No such item '"
+                            + itemName + "'");
                 }
             }
         }
@@ -99,10 +101,10 @@ public class GameState {
         w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
         if (inventory.size() > 0) {
             w.print(INVENTORY_LEADER);
-            for (int i=0; i<inventory.size()-1; i++) {
+            for (int i = 0; i < inventory.size() - 1; i++) {
                 w.print(inventory.get(i).getPrimaryName() + ",");
             }
-            w.println(inventory.get(inventory.size()-1).getPrimaryName());
+            w.println(inventory.get(inventory.size() - 1).getPrimaryName());
         }
         w.close();
     }
@@ -170,33 +172,41 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
-    
+
     int getHealth() {
         return health;
     }
-    
+
     int getTotalHealth() {
         return totalHealth;
     }
-    
+
     int getScore() {
         return score;
     }
-    
+
     int getGamesState() {
         return gamesState;
     }
-    
+
     boolean getVerboseState() {
         return verbose;
     }
-    
+
     void setVerboseState(Boolean setB) {
-        if(setB == true) {
+        if (setB == true) {
             verbose = true;
-        }else{
+        } else {
             verbose = false;
         }
     }
 
+    boolean isLit() {
+        if (isLit == true) {
+            isLit = true;
+        } else {
+            isLit = false;
+        }
+        return true;
+    }
 }

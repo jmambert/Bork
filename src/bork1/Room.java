@@ -21,6 +21,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private boolean locked;
+    private boolean isDark;
 
     Room(String title) {
         init();
@@ -145,21 +146,47 @@ public class Room {
     }
 
     public String describe() {
-        String description;
-        if (beenHere) {
+        String description = "";
+        if (isDark && GameState.instance().isLit() == false) { //if room dark
+            return "Room is too dark to see, you are unable to explore.";
+        } else //room is dark but they have light source
+        if (beenHere && !GameState.instance().getVerboseState()) { //if been here is true, just print room name
             description = title;
-        } else {
-            description = title + "\n" + desc;
-        }
-        for (Item item : contents) {
-            description += "\nThere is a " + item.getPrimaryName() + " here.";
-        }
-        if (contents.size() > 0) {
-            description += "\n";
-        }
-        if (!beenHere || GameState.instance().getVerboseState()) {
+            for (Item item : contents) { //print contents
+                description += "\nThere is a " + item.getPrimaryName() + " here.";
+            }
+            if (contents.size() > 0) { //print contents
+                description += "\n";
+            }
+        } else if (!beenHere && GameState.instance().getVerboseState()) {
+            description = title + "\n" + desc; //print off desc, room name and contents
+            for (Item item : contents) { //print contents
+                description += "\nThere is a " + item.getPrimaryName() + " here.";
+            }
+            if (contents.size() > 0) { //print contents
+                description += "\n";
+            }
             for (Exit exit : exits) {
                 description += "\n" + exit.describe();
+            }
+        } else if (beenHere && GameState.instance().getVerboseState()) { //if been here is true,  & verboseOFF, just print room name
+            description = title;
+            for (Item item : contents) { //print contents
+                description += "\nThere is a " + item.getPrimaryName() + " here.";
+            }
+            if (contents.size() > 0) { //print contents
+                description += "\n";
+            }
+            for (Exit exit : exits) {
+                description += "\n" + exit.describe();
+            }
+        } else { //if havnt been here or verbose state is ture
+            description = title + "\n" + desc; //print off desc, room name and contents
+            for (Item item : contents) { //print contents
+                description += "\nThere is a " + item.getPrimaryName() + " here.";
+            }
+            if (contents.size() > 0) { //print contents
+                description += "\n";
             }
         }
         beenHere = true;
@@ -212,5 +239,13 @@ public class Room {
 
     ArrayList<Item> getContents() {
         return contents;
+    }
+
+    boolean isDark() {
+        if (isDark == true) {
+            return true; //lighted room
+        } else {
+            return false; //unlighted room
+        }
     }
 }
