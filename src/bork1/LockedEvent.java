@@ -10,14 +10,19 @@ package bork1;
  * @author Jordan
  */
 class LockedEvent extends Event {
+    String room;
+    String exit;
     
-    LockedEvent() {
-        
+    LockedEvent(String room, String exit) {
+        this.room = room;
+        this.exit = exit;
     }
     
     public String execute() {
         
-        return "Sorry, this exit is locked.";
+        GameState.instance().getDungeon().getRoom(room).getExit(exit)
+                .setLockState(true);
+        return exit + " was locked!";
     }
     
 }

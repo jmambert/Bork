@@ -85,42 +85,52 @@ Exits:
 Rotunda
 u
 Rotunda balcony
+Locked: f
 ---
 Rotunda balcony
 d
 Rotunda
+Locked: f
 ---
 Rotunda
 d
 Basement hallway
+Locked: f
 ---
 Basement hallway
 u
 Rotunda
+Locked: f
 ---
 Basement hallway
 s
 Room B13
+Locked: t
 ---
 Room B13
 n
 Basement hallway
+Locked: f
 ---
 Room B6
 w
 Basement hallway
+Locked: f
 ---
 Basement hallway
 e
 Room B6
+Locked: f
 ---
 Basement hallway
 w
 Stephen's office
+Locked: t
 ---
 Stephen's office
 e
 Basement hallway
+Locked: f
 ---
 ===
 

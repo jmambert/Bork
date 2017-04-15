@@ -19,10 +19,10 @@ class UnlockedEvent extends Event {
     }
     
     public String execute() {
-        String exitName = this.exit.toString();
+        
         GameState.instance().getDungeon().getRoom(room).getExit(exit)
                 .setLockState(false);
-        return "You unlocked " + exitName + "!";
+        return "You unlocked " + exit + "!";
     }
     
 }

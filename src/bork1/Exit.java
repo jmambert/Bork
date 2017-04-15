@@ -49,6 +49,7 @@ public class Exit {
         src = d.getRoom(srcTitle);
         dir = s.nextLine();
         dest = d.getRoom(s.nextLine());
+        locked = s.nextLine().equals("Locked: t");
         
         // I'm an Exit object. Great. Add me as an exit to my source Room too,
         // though.
@@ -60,6 +61,8 @@ public class Exit {
                 Dungeon.SECOND_LEVEL_DELIM + "' after exit.");
         }
     }
+    
+    
 
     // Common object initialization tasks.
     private void init() {
@@ -70,6 +73,10 @@ public class Exit {
     @author jmambert
     */
     String describe() {
+        if(locked == true){
+            return dir + " to " + dest.getTitle() + " is locked.";
+        }
+        
         return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
 
@@ -83,5 +90,9 @@ public class Exit {
         }else{
             locked = false;
         }
+    }
+    
+    Boolean getLockState(){
+        return locked;
     }
 }

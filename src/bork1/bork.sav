@@ -23,6 +23,50 @@ Rotunda:
 beenHere=true
 ---
 ===
+Exit States:
+Rotunda
+u
+Rotunda balcony
+Locked: f
+---
+Rotunda balcony
+d
+Rotunda
+Locked: f
+---
+Rotunda
+d
+Basement hallway
+Locked: f
+---
+Basement hallway
+u
+Rotunda
+Locked: f
+---
+Room B6
+w
+Basement hallway
+Locked: f
+---
+Basement hallway
+e
+Room B6
+Locked: f
+---
+Basement hallway
+w
+Stephen's office
+Locked: f
+---
+Stephen's office
+e
+Locked: f
+---
+===
 Adventurer:
-Current room: Room B13
-Inventory: magicWand,DrPepper,donut
+Current room: Basement hallway
+Inventory: chainsaw,magicWand,DrPepper,donut,StarWarsToy
+Health: 100
+Score: 50
+

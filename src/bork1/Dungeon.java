@@ -138,6 +138,12 @@ public class Dungeon {
             room.storeState(w);
         }
         w.println(TOP_LEVEL_DELIM);
+        w.println("Exit States:");
+        for (Room room : rooms.values()) {
+            for(Exit exit : room.getExits()) {
+                exit.storeState(w);
+        }
+        }
     }
 
     /*

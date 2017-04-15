@@ -181,12 +181,16 @@ public class Room {
     
     Exit getExit(String exitName) {
         for(int i=0; i<exits.size();i++){
-            if (exits.get(i).toString().equals(exitName)){
+            if (exits.get(i).getDir().equals(exitName)){
                 return exits.get(i);
             }
         }
         
         return null;
+    }
+    
+    ArrayList<Exit> getExits() {
+        return exits;
     }
 
     void add(Item item) {
