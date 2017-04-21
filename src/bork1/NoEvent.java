@@ -8,22 +8,14 @@ package bork1;
 /**
  *
  * @author Jordan
- * when triggered, the event will print a message to the screen
  */
-class DieEvent extends Event {
-    
-    DieEvent() {
+public class NoEvent {
+    NoEvent() {
         
     }
     
-    /**
- *
- * @author Jordan
- * returns a string saying the player has died
- */
     public String execute() {
-        boolean isDone = true;
-        return "You died.\nGame over.";
+        return "Something went wrong";
     }
     
 }

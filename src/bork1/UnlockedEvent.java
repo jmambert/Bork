@@ -17,6 +17,10 @@ class UnlockedEvent extends Event {
         this.room = room;
         this.exit = exit;
     }
+
+    UnlockedEvent() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public String execute() {
         

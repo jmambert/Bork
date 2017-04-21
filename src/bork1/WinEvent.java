@@ -13,7 +13,7 @@ package bork1;
 class WinEvent extends Event {
 
     WinEvent() {
-
+        
     }
 
     /**
@@ -21,6 +21,7 @@ class WinEvent extends Event {
      * returns a string saying the player won
      */
     public String execute() {
+        boolean isDone = true;
         return "Congradulations! You won!";
     }
 

@@ -9,6 +9,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.lang.String;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 /**
  *
@@ -18,7 +20,13 @@ public class EventFactory {
 
     private String noun;
     private String verb;
+    private Dungeon d;
+    private Scanner c;
 
+    EventFactory (Scanner c, Dungeon d) {
+        this.c = c;
+        this.d = d;
+    }
     EventFactory(String noun, String verb) {
         this.noun = noun;
         this.verb = verb;
@@ -33,24 +41,55 @@ public class EventFactory {
     //if (tryThis.contains(verb)) {
 
     //}
-    public String execute() {
+    public Event parse() {
         Item itemReferredTo = null;
         try {
             itemReferredTo = GameState.instance().getItemFromInventoryNamed(noun);
             String thisHappens = s.findInLine("[");
-            Scanner s = new Scanner(in).useDelimiter("\\s*[\\s*");
-            Scanner sc = new Scanner(input).useDelimiter("\\s*]\\s*");
-
-    /*int startIndex;
-    startIndex = s.indexOf('[');
-    System.out.println("indexOf([) = " + startIndex);
-    int endIndex = s.indexOf(']');
-    System.out.println("indexOf(]) = " + endIndex);
-    System.out.println(s.substring(startIndex + 1, endIndex));
-    */
+            try {
+                String filename = null;
+            Scanner read = new Scanner (new FileReader(filename));
+            read.useDelimiter("[");
+            read.useDelimiter("]");
+            } catch (FileNotFoundException e) {
+                
+            }
+            String theEvent = s.next();
+            if (theEvent.equals("win")) {
+                return new WinEvent();
+            }
+            else if (theEvent.equals("lose")) {
+                return new LoseEvent();
+            }
+            else if (theEvent.equals("teleport")) {
+                return new TeleportEvent();
+            }
+            else if (theEvent.equals("transform")) {
+                return new TransformEvent();
+            }
+            else if (theEvent.equals("die")) {
+                return new DieEvent();
+            }
+            else if (theEvent.equals("disappear")) {
+                return new DisappearEvent();
+            }
+            else if (theEvent.equals("wound")) {
+                return new WoundEvent();
+            }
+            else if (theEvent.equals("unlock")) {
+                return new UnlockedEvent();
+            }
+            else if (theEvent.equals(" ")) {
+                
+            }
+                
         } catch (Item.NoItemException e) {
-            return "Something went wrong in execute(), EventFactory";
+            
         }
+        return NoEvent();
+    }
 
+    private Event NoEvent() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

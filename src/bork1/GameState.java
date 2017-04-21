@@ -36,6 +36,7 @@ public class GameState {
     private boolean verbose;
     //private ArrayList<Room> darkRooms; //delete?
     private boolean isLit = true;
+    public boolean isDone = false;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
