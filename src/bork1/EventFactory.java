@@ -79,6 +79,7 @@ public class EventFactory {
             else if (theEvent.equals("unlock")) {
                 return new UnlockedEvent();
             }
+            // lock event?
            
             return NoEvent();
             

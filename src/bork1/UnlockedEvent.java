@@ -10,8 +10,8 @@ package bork1;
  * @author Jordan
  */
 class UnlockedEvent extends Event {
-    String room;
-    String exit;
+    private String room;
+    private String exit;
     
     UnlockedEvent(String room, String exit) {
         this.room = room;

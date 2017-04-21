@@ -20,7 +20,6 @@ public class Room {
     private boolean beenHere;
     public ArrayList<Item> contents;
     private ArrayList<Exit> exits;
-    private boolean locked;
     private boolean isDark;
 
     Room(String title) {
@@ -241,6 +240,18 @@ public class Room {
         return contents;
     }
 
+    public boolean getIsDark(){
+        return isDark;
+    }
+    
+    public void setIsDark(Boolean setLight){
+        if(setLight == false) {
+            isDark = true;
+        }else{
+            isDark = false;
+        }
+    }
+    /*
     boolean isDark() {
         if (isDark == true) {
             return true; //lighted room
@@ -248,4 +259,5 @@ public class Room {
             return false; //unlighted room
         }
     }
+    */
 }

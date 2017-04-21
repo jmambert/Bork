@@ -10,14 +10,20 @@ package bork1;
  * @author Jordan
  */
 class LightEvent extends Event {
+    private String room;
     
-    LightEvent() {
-        
+    LightEvent(String room) {
+        this.room = room;
     }
     
     public String execute() {
-        
-        return "";
+        String theRoom = GameState.instance().getDungeon().getRoom(room).getTitle();
+        if (GameState.instance().getDungeon().getRoom(room).getIsDark() == true){
+            GameState.instance().getDungeon().getRoom(room).setIsDark(false);
+        } else{
+            GameState.instance().getDungeon().getRoom(room).setIsDark(true);
+        }
+        return theRoom + " was lit up!";
     }
     
 }

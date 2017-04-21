@@ -10,8 +10,8 @@ package bork1;
  * @author Jordan
  */
 class LockedEvent extends Event {
-    String room;
-    String exit;
+    private String room;
+    private String exit;
     
     LockedEvent(String room, String exit) {
         this.room = room;
