@@ -39,7 +39,7 @@ public class Interpreter {
 
             System.out.print("\n" + 
                 state.getAdventurersCurrentRoom().describe() + "\n");
-            System.out.print("Typ 'verbose on/off' to toggle verbose mode.\n");
+            System.out.print("Type 'verbose on/off' to toggle verbose mode.\n");
 
             command = promptUser(commandLine);
 

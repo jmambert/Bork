@@ -5,6 +5,7 @@ ItemSpecificCommand extends Command and deals with commands that are not already
     taken in account for
 @author jmambert
 */
+import java.util.ArrayList;
 
 class ItemSpecificCommand extends Command {
 
@@ -32,6 +33,7 @@ class ItemSpecificCommand extends Command {
         Item itemReferredTo = null;
         try {
             itemReferredTo = GameState.instance().getItemInVicinityNamed(noun);
+            new EventFactory(noun, verb);
         } catch (Item.NoItemException e) {
             return "There's no " + noun + " here.\n";
         }

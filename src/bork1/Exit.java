@@ -4,9 +4,14 @@ package bork1;
 /*
 Exit
 */
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Exit {
+
+    void storeState(PrintWriter w) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     class NoExitException extends Exception {}
 

@@ -36,7 +36,7 @@ class MovementCommand extends Command {
             } else {
                 return "You can't go " + dir + ".\n";
             }
-        }else{
+        } else {
            return "You can't go " + dir + " because it is locked.\n";
         }
     }

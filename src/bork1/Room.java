@@ -18,7 +18,7 @@ public class Room {
     private String title;
     private String desc;
     private boolean beenHere;
-    private ArrayList<Item> contents;
+    public ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private boolean locked;
     private boolean isDark;
