@@ -240,6 +240,8 @@ public class Room {
         return contents;
     }
 
+    
+    
     public boolean getIsDark(){
         return isDark;
     }
