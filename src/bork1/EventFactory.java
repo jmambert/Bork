@@ -79,14 +79,13 @@ public class EventFactory {
             else if (theEvent.equals("unlock")) {
                 return new UnlockedEvent();
             }
-            else if (theEvent.equals(" ")) {
-                
-            }
-                
+           
+            return NoEvent();
+            
         } catch (Item.NoItemException e) {
             
         }
-        return NoEvent();
+        return null;
     }
 
     private Event NoEvent() {
