@@ -22,7 +22,7 @@ class LightEvent extends Event {
         } else{
             GameState.instance().setIsLit(true);
         }
-        return itemName + " was lit up!";
+        return "";
     }
     
 }
