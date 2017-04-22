@@ -29,15 +29,24 @@ class MovementCommand extends Command {
     public String execute() {
         Room currentRoom = GameState.instance().getAdventurersCurrentRoom();
         Room nextRoom = currentRoom.leaveBy(dir);
-        if (currentRoom.getExit(dir).getLockState() == false) {
-            if (nextRoom != null) {  // could try/catch here.
-                GameState.instance().setAdventurersCurrentRoom(nextRoom);
-                return "\n" + nextRoom.describe() + "\n";
+        if (nextRoom != null) {
+            if (currentRoom.getExit(dir).getLockState() == false) {  // could try/catch here.
+                if (nextRoom.getIsDark() == true){
+                    if (GameState.instance().getIsLit() == true){
+                        GameState.instance().setAdventurersCurrentRoom(nextRoom);
+                        return "\n" + nextRoom.describe() + "\n";
+                    } else {
+                        return "It's too dark to see anything";
+                    }
+                } else {
+                    GameState.instance().setAdventurersCurrentRoom(nextRoom);
+                        return "\n" + nextRoom.describe() + "\n";
+                }
             } else {
-                return "You can't go " + dir + ".\n";
+                return "You can't go " + dir + " because it is locked.\n";
             }
         } else {
-           return "You can't go " + dir + " because it is locked.\n";
+           return "You can't go " + dir + ".\n";
         }
     }
 }

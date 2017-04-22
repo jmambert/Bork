@@ -89,7 +89,7 @@ public class Exit {
     Room getSrc() { return src; }
     Room getDest() { return dest; }
     
-    void setLockState(Boolean setLock){
+    public void setLockState(Boolean setLock){
         if(setLock == true) {
             locked = true;
         }else{
@@ -97,7 +97,7 @@ public class Exit {
         }
     }
     
-    Boolean getLockState(){
+    public Boolean getLockState(){
         return locked;
     }
 }

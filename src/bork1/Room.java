@@ -20,7 +20,6 @@ public class Room {
     private boolean beenHere;
     public ArrayList<Item> contents;
     private ArrayList<Exit> exits;
-    private boolean locked;
     private boolean isDark;
 
     Room(String title) {
@@ -147,7 +146,7 @@ public class Room {
 
     public String describe() {
         String description = "";
-        if (isDark && GameState.instance().isLit() == false) { //if room dark
+        if (isDark && GameState.instance().getIsLit() == false) { //if room dark
             return "Room is too dark to see, you are unable to explore.";
         } else //room is dark but they have light source
         if (beenHere && !GameState.instance().getVerboseState()) { //if been here is true, just print room name
@@ -241,6 +240,20 @@ public class Room {
         return contents;
     }
 
+    
+    
+    public boolean getIsDark(){
+        return isDark;
+    }
+    
+    public void setIsDark(Boolean setLight){
+        if(setLight == false) {
+            isDark = true;
+        }else{
+            isDark = false;
+        }
+    }
+    /*
     boolean isDark() {
         if (isDark == true) {
             return true; //lighted room
@@ -248,4 +261,5 @@ public class Room {
             return false; //unlighted room
         }
     }
+    */
 }

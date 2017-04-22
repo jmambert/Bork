@@ -35,7 +35,7 @@ public class GameState {
     private int gamesState; //win = 3, lose = 2, play = 1
     private boolean verbose;
     //private ArrayList<Room> darkRooms; //delete?
-    private boolean isLit = true;
+    public boolean isLit;
     public boolean isDone = false;
 
     static synchronized GameState instance() {
@@ -202,12 +202,15 @@ public class GameState {
         }
     }
 
-    boolean isLit() {
-        if (isLit == true) {
+    boolean getIsLit(){
+        return isLit;
+    }
+    
+    void setIsLit(Boolean setLit){
+        if(setLit == false) {
             isLit = true;
-        } else {
+        }else{
             isLit = false;
         }
-        return true;
     }
 }
