@@ -15,7 +15,7 @@ class TransformEvent extends Event {
     private String itemName;
     private String newItemName;
 
-    TransformEvent() {
+    TransformEvent(String itemName, String newItemName) {
         this.itemName = itemName;
         this.newItemName = newItemName;
     }

@@ -13,7 +13,7 @@ package bork1;
 class DisappearEvent extends Event {
     private String itemName;
 
-    DisappearEvent() {
+    DisappearEvent(String itemName) {
         this.itemName = itemName;
     }
 /**

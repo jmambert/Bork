@@ -16,12 +16,14 @@ public class Item {
     private String primaryName;
     private int weight;
     private Hashtable<String,String> messages;
+    private Hashtable<String,String>events;
 
 
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
         messages = new Hashtable<String,String>();
+        events = new Hashtable<String,String>();
 
         // Read item name.
         primaryName = s.nextLine();
@@ -40,7 +42,15 @@ public class Item {
                     Dungeon.SECOND_LEVEL_DELIM + "' after item.");
             }
             String[] verbParts = verbLine.split(":");
-            messages.put(verbParts[0],verbParts[1]);
+            if(verbParts[0].contains("[")) {
+            messages.put(verbParts[0].substring(0,verbParts[0].indexOf("[")),verbParts[1]); //recycle and booya
+            events.put(verbParts[0].substring(0,verbParts[0].indexOf("[")), //recycle
+                    verbParts[0].substring(verbParts[0].indexOf("[")+1,
+                            verbParts[0].indexOf("]"))); //
+            }
+            else {
+                messages.put(verbParts[0],verbParts[1]);
+            }
             
             verbLine = s.nextLine();
         }
@@ -72,6 +82,10 @@ public class Item {
     */
     public String getMessageForVerb(String verb) {
         return messages.get(verb);
+    }
+    
+    public String getEventForVerb(String event) {
+        return events.get(event);
     }
 
     /*

@@ -14,7 +14,7 @@ package bork1;
 class WoundEvent extends Event {
 
     private int damageTaken;
-    WoundEvent() {
+    WoundEvent(int damageTaken) {
         damageTaken = this.damageTaken;
     }
 

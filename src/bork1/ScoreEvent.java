@@ -13,7 +13,7 @@ package bork1;
 class ScoreEvent extends Event {
     private int addToScore;
 
-    ScoreEvent() {
+    ScoreEvent(int addToScore) {
         addToScore = this.addToScore;
     }
 
