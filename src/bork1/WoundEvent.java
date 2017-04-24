@@ -15,7 +15,7 @@ class WoundEvent extends Event {
 
     private int damageTaken;
     WoundEvent(int damageTaken) {
-        damageTaken = this.damageTaken;
+        this.damageTaken = damageTaken;
     }
 
     /**
@@ -27,6 +27,7 @@ class WoundEvent extends Event {
     public String execute() {
         int playersCurrentHealth = GameState.instance().getHealth();
         int newCurrentHealth = playersCurrentHealth - damageTaken;
+        GameState.instance().setHealth(newCurrentHealth);
         return "Ouch! That hurt. You have taken damage.";
     }
 

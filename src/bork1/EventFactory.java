@@ -48,7 +48,7 @@ public class EventFactory {
                 new TeleportEvent().execute();
             }
             else if (theEvent.contains("Transform")) {
-                String be[] = param.split(",");
+                String be[] = param.split("/");
                 new TransformEvent(be[0],be[1]).execute();
             }
             else if (theEvent.contains("Die")) {
@@ -62,15 +62,19 @@ public class EventFactory {
                 new WoundEvent(num).execute();
             }
             else if (theEvent.contains("Unlock")) {
-                String be[] = param.split(",");
+                String be[] = param.split("/");
                 new UnlockedEvent(be[0],be[1]).execute();
             }
             else if (theEvent.contains("Lock")) {
-                String be[] = param.split(",");
+                String be[] = param.split("/");
                 new LockedEvent(be[0],be[1]).execute();
             }
             else if (theEvent.contains("Light")) {
                 new LightEvent().execute();
+            }
+            else if (theEvent.contains("Score")) {
+                int num = Integer.valueOf(param);
+                new ScoreEvent(num).execute();
             }
             
         }

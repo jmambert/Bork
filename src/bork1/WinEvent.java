@@ -21,7 +21,7 @@ class WinEvent extends Event {
      * returns a string saying the player won
      */
     public String execute() {
-        boolean isDone = true;
+        GameState.instance().setIsWon();
         return "Congradulations! You won!";
     }
 

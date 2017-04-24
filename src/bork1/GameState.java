@@ -32,11 +32,10 @@ public class GameState {
     private int health;
     private int totalHealth;
     private int score;
-    private int gamesState; //win = 3, lose = 2, play = 1
     private boolean verbose;
-    //private ArrayList<Room> darkRooms; //delete?
     public boolean isLit;
     public boolean isDone = false;
+    private boolean isWon = false;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -113,8 +112,8 @@ public class GameState {
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
-        gamesState = 1;
         verbose = true;
+        isWon = false;
     }
 
     ArrayList<String> getInventoryNames() {
@@ -177,17 +176,31 @@ public class GameState {
     int getHealth() {
         return health;
     }
+    
+    void setHealth(int newHealth){
+        if (newHealth > totalHealth){
+            newHealth = totalHealth;
+        }
+        if (newHealth < 0) {
+            newHealth = 0;
+        }
+        health = newHealth;
+    }
 
     int getTotalHealth() {
         return totalHealth;
+    }
+    
+    void setTotalHealth(int health) {
+        totalHealth = health;
     }
 
     int getScore() {
         return score;
     }
-
-    int getGamesState() {
-        return gamesState;
+    
+    void setScore(int newScore){
+        score = newScore;
     }
 
     boolean getVerboseState() {
@@ -207,10 +220,24 @@ public class GameState {
     }
     
     void setIsLit(Boolean setLit){
-        if(setLit == false) {
-            isLit = true;
-        }else{
-            isLit = false;
-        }
+        isLit = setLit;
+    }
+    
+    boolean getIsDone() {
+        return isDone;
+    }
+    
+    boolean getIsWon() {
+        return isWon;
+    }
+    
+    void setIsWon() {
+        isDone = true;
+        isWon = true;
+    }
+    
+    void setIsLost() {
+        isDone = true;
+        isWon = false;
     }
 }

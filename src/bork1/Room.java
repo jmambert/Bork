@@ -56,6 +56,13 @@ public class Room {
         if (title.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoRoomException();
         }
+        
+        String lOrD = s.nextLine();
+        if (lOrD.equals("light")) {
+            isDark = false;
+        } else {
+            isDark = true;
+        }
 
         String lineOfDesc = s.nextLine();
         while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM)
@@ -179,7 +186,7 @@ public class Room {
             for (Exit exit : exits) {
                 description += "\n" + exit.describe();
             }
-        } else { //if havnt been here or verbose state is ture
+        } else { //if havent been here or verbose state is ture
             description = title + "\n" + desc; //print off desc, room name and contents
             for (Item item : contents) { //print contents
                 description += "\nThere is a " + item.getPrimaryName() + " here.";

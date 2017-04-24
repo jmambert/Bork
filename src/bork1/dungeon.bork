@@ -12,13 +12,13 @@ DrPepper
 10
 kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
-drink[Transform(DrPepper,emptyCan),Wound(-1)]:Gulp, gulp -- that was GOOD!
+drink[Transform(DrPepper/emptyCan),Wound(-1)]:Gulp, gulp -- that was GOOD!
 ---
 emptyCan
 2
 kick:The empty can skitters down the hallway.
 drink:Sorry, all gone!
-stomp[Transform(emptyCan,squishedCan)]:The can crunches down into a thin disk, useful for recycling.
+stomp[Transform(emptyCan/squishedCan)]:The can crunches down into a thin disk, useful for recycling.
 ---
 squishedCan
 2
@@ -36,7 +36,15 @@ StarWarsToy
 5
 touch[Score(1)]:Yoda says, "Do, or do not! There is no try."
 break:Luckily, it's made of rugged plastic.
-unlock[Unlock(Basement hallway,w)]:You shove the toy into the hole and surprisingly, the toy molds into the shape of the keyhole.
+---
+Torch
+1
+light[Light]:It's lit fam
+---
+key
+1
+unlock[Unlock(Basement hallway/w)]:You hear a click. The door is now unlocked.
+lock[Lock(Basement hallway/w)]:You lock the door behind you and tuck the key in your pocket.
 ---
 chainsaw
 35
@@ -48,35 +56,41 @@ refill[Win]:You refill the mug with everlasting light roast coffee, and live hap
 ---
 donut
 7
-eat[Disappear(donut),Wound(-2)]:You feel mildly guilt-ridden.
+eat[Disappear(donut),Wound(-10)]:You feel mildly guilt-ridden.
 stomp:The donut is now smooshed.
 ---
 ===
 Rooms:
 Rotunda
+light
+Contents: Torch
 You are in a beautiful round entry chamber, with tall white pillars that
 seemingly reach to the skies. There is an elevator here.
 ---
 Basement hallway
-Contents: DrPepper
+light
+Contents: DrPepper,key
 A long, white hallway stretches to the east and west. It is cold here, and you
 can detect the faint buzz of computer fans. A vending machine hums softly in the
 corner.
 ---
 Stephen's office
+dark
 Contents: StarWarsToy,WawaTravelMug,donut
 This is a cluttered office, with many geeky toys sprawling on a desk.
 ---
 Room B6
+light
 Sunlight streams through tall windows and illuminates a brilliant classroom.
 ---
 Room B13
+dark
 Contents: bomb
 Rows of state-of-the-art computers line the room, with happy young people typing
 merrily away at several of them. They look up and wave hello to you.
-The door locks behind you.
 ---
 Rotunda balcony
+light
 Contents: chainsaw,magicWand
 You stand on a circular white balcony overlooking an entry hall.
 Columnar bannisters in ancient Grecian style stand between you and the
@@ -107,7 +121,7 @@ Locked: f
 Basement hallway
 s
 Room B13
-Locked: t
+Locked: f
 ---
 Room B13
 n
@@ -135,4 +149,4 @@ Basement hallway
 Locked: f
 ---
 ===
-
+100

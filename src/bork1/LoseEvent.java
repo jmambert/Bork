@@ -22,7 +22,7 @@ class LoseEvent extends Event {
      * returns a string saying the player has lost
      */
     public String execute() {
-        boolean isDone = true;
+        GameState.instance().setIsLost();
         return "You lose.";
     }
 

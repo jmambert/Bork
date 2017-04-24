@@ -116,7 +116,9 @@ public class Dungeon {
                 Exit exit = new Exit(s, this);
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
-
+        
+        GameState.instance().setTotalHealth(Integer.valueOf(s.nextLine()));
+        GameState.instance().setHealth(GameState.instance().getTotalHealth());
         s.close();
     }
     

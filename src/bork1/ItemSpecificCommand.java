@@ -44,6 +44,7 @@ class ItemSpecificCommand extends Command {
 
         String msg = itemReferredTo.getMessageForVerb(verb);
         return (msg == null
-                ? "Sorry, you can't " + verb + " the " + noun + "." : msg) + "\n";
+                ? "Sorry, you can't " + verb + " the " + noun + "." : "\n" + 
+                msg + "\n" + GameState.instance().getAdventurersCurrentRoom().describe()) + "\n";
     }
 }

@@ -14,7 +14,7 @@ class ScoreEvent extends Event {
     private int addToScore;
 
     ScoreEvent(int addToScore) {
-        addToScore = this.addToScore;
+        this.addToScore = addToScore;
     }
 
     /**
@@ -25,6 +25,7 @@ class ScoreEvent extends Event {
     public String execute() {
         int tempScore = GameState.instance().getScore();
         int newScore = tempScore + addToScore;
+        GameState.instance().setScore(newScore);
         return "Your score has been updated!";
     }
 }

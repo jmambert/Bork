@@ -23,7 +23,7 @@ class ScoreCommand extends Command {
      */
     public String execute() {
         int score = GameState.instance().getScore();
-        return "Your score is " + score + ".";
+        return "Your score is " + score + ". \n";
     }
 
 }

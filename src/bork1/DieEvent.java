@@ -22,7 +22,7 @@ class DieEvent extends Event {
  * returns a string saying the player has died
  */
     public String execute() {
-        boolean isDone = true;
+        GameState.instance().setIsLost();
         return "You died.\nGame over.";
     }
     

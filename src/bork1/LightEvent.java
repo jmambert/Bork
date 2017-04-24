@@ -18,7 +18,7 @@ class LightEvent extends Event {
     public String execute() {
         String itemName = "";
         if (GameState.instance().getIsLit() == true){
-            GameState.instance().setIsLit(false);
+            GameState.instance().setIsLit(true);
         } else{
             GameState.instance().setIsLit(true);
         }
