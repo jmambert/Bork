@@ -30,6 +30,8 @@ public class Interpreter {
                 state.restore(filename);
                 System.out.println("\nWelcome back to "
                         + state.getDungeon().getName() + "!");
+                String room = GameState.instance().getAdventurersCurrentRoom().getTitle();
+                System.out.println("\nYou are in " + room);
             } else {
                 System.err.println(USAGE_MSG);
                 System.exit(2);

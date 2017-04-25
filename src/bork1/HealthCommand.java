@@ -26,24 +26,24 @@ class HealthCommand extends Command {
         int tempHealth = GameState.instance().getHealth();
         int tempTotalHealth = GameState.instance().getTotalHealth();
         if (tempHealth == tempTotalHealth) {
-            return "You're all healthed up!";
+            return "You're all healthed up!" + "\n";
         } else if ((tempHealth >= tempTotalHealth * .9) && (tempHealth < tempTotalHealth)) { //90-100
-            return "You're feelin' pretty good.";
+            return "You're feelin' pretty good." + "\n";
         } else if ((tempHealth >= tempTotalHealth * .5) && (tempHealth < tempTotalHealth * .9)) { //50-90
-            return "You feel normal.";
+            return "You feel normal." + "\n";
         } else if ((tempHealth >= tempTotalHealth * .4) && (tempHealth < tempTotalHealth * .5)) { //40-50
-            return "You feel a slight pang, but it's not enough to complain about.";
+            return "You feel a slight pang, but it's not enough to complain about." + "\n";
         } else if ((tempHealth >= tempTotalHealth * .3) && (tempHealth < tempTotalHealth * .4)) { //30-40
-            return "You are in pain.";
+            return "You are in pain." + "\n";
         } else if ((tempHealth >= tempTotalHealth * .2) && (tempHealth < tempTotalHealth * .3)) { //20-30
-            return "You really hurt.";
+            return "You really hurt." + "\n";
         } else if ((tempHealth >= tempTotalHealth * .1) && (tempHealth < tempTotalHealth * .2)) { //10-20
-            return "You don't know how much longer you can go on";
+            return "You don't know how much longer you can go on" + "\n";
         } else if ((tempHealth > tempTotalHealth * 0) && (tempHealth < tempTotalHealth * .1)) { //1-10
-            return "This is your last straw.";
+            return "This is your last straw." + "\n";
         } else if (tempHealth <= 0) {
-            return "You dead.";
+            return "You dead." + "\n";
         } 
-        return "Something went wrong...Health unattainable";
+        return "Something went wrong...Health unattainable" + "\n";
     }
 }

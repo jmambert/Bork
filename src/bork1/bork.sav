@@ -1,0 +1,35 @@
+Bork v3.0 save data
+Dungeon file: dungeon.bork
+Room states:
+Stephen's office:
+beenHere=true
+isDark=true
+Contents: StarWarsToy,WawaTravelMug,donut
+---
+Room B6:
+beenHere=true
+isDark=false
+---
+Basement hallway:
+beenHere=true
+isDark=false
+---
+Room B13:
+beenHere=false
+isDark=true
+Contents: bomb
+---
+Rotunda balcony:
+beenHere=true
+isDark=false
+---
+Rotunda:
+beenHere=true
+isDark=false
+---
+===
+Adventurer:
+Current room: Basement hallway
+Score: 5
+Health: 91
+Inventory: chainsaw,key,Torch

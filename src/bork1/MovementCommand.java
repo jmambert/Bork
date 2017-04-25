@@ -36,7 +36,7 @@ class MovementCommand extends Command {
                         GameState.instance().setAdventurersCurrentRoom(nextRoom);
                         return "\n" + nextRoom.describe() + "\n";
                     } else {
-                        return "It's too dark to see anything";
+                        return "It's too dark to see anything" + "\n";
                     }
                 } else {
                     GameState.instance().setAdventurersCurrentRoom(nextRoom);

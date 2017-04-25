@@ -34,7 +34,7 @@ class SaveCommand extends Command {
             return "Data saved to " + saveFilename +
                 GameState.SAVE_FILE_EXTENSION + ".\n";
         } catch (Exception e) {
-            System.err.println("Couldn't save!");
+            System.err.println("Couldn't save!" + "\n");
             e.printStackTrace();
             return "";
         }

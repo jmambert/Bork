@@ -20,14 +20,14 @@ class VerboseCommand extends Command {
     public String execute() {
         if(verbose.toLowerCase().equals("on")){
             GameState.instance().setVerboseState(true);
-            return "Verbose mode is on";
+            return "Verbose mode is on" + "\n";
         }
         if(verbose.toLowerCase().equals("off")){
             GameState.instance().setVerboseState(false);
-            return "Verbose mode is off";
+            return "Verbose mode is off" + "\n";
         }
         else{
-            return "Bad use of verbose mode";
+            return "Bad use of verbose mode" + "\n";
         }
     }
     

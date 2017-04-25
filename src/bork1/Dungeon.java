@@ -113,7 +113,7 @@ public class Dungeon {
         try {
             // Instantiate exits.
             while (true) {
-                Exit exit = new Exit(s, this);
+                Exit exit = new Exit(s, this, initState);
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
         
@@ -140,12 +140,6 @@ public class Dungeon {
             room.storeState(w);
         }
         w.println(TOP_LEVEL_DELIM);
-        w.println("Exit States:");
-        for (Room room : rooms.values()) {
-            for(Exit exit : room.getExits()) {
-                exit.storeState(w);
-        }
-        }
     }
 
     /*

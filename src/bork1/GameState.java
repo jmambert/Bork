@@ -24,6 +24,8 @@ public class GameState {
     static String ADVENTURER_MARKER = "Adventurer:";
     static String CURRENT_ROOM_LEADER = "Current room: ";
     static String INVENTORY_LEADER = "Inventory: ";
+    static String CURRENT_SCORE = "Score: ";
+    static String CURRENT_HEALTH = "Health: ";
 
     private static GameState theInstance;
     private Dungeon dungeon;
@@ -50,7 +52,7 @@ public class GameState {
 
     void restore(String filename) throws FileNotFoundException,
             IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
-
+        verbose = true;
         Scanner s = new Scanner(new FileReader(filename));
 
         if (!s.nextLine().equals(SAVE_FILE_VERSION)) {
@@ -73,6 +75,8 @@ public class GameState {
         String currentRoomLine = s.nextLine();
         adventurersCurrentRoom = dungeon.getRoom(
                 currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+        setScore(Integer.valueOf(s.nextLine().substring(7)));
+        setHealth(Integer.valueOf(s.nextLine().substring(8)));
         if (s.hasNext()) {
             String inventoryList = s.nextLine().substring(
                     INVENTORY_LEADER.length());
@@ -99,6 +103,8 @@ public class GameState {
         dungeon.storeState(w);
         w.println(ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
+        w.println(CURRENT_SCORE + getScore());
+        w.println(CURRENT_HEALTH + getHealth());
         if (inventory.size() > 0) {
             w.print(INVENTORY_LEADER);
             for (int i = 0; i < inventory.size() - 1; i++) {
@@ -176,9 +182,9 @@ public class GameState {
     int getHealth() {
         return health;
     }
-    
-    void setHealth(int newHealth){
-        if (newHealth > totalHealth){
+
+    void setHealth(int newHealth) {
+        if (newHealth > totalHealth) {
             newHealth = totalHealth;
         }
         if (newHealth < 0) {
@@ -190,7 +196,7 @@ public class GameState {
     int getTotalHealth() {
         return totalHealth;
     }
-    
+
     void setTotalHealth(int health) {
         totalHealth = health;
     }
@@ -198,8 +204,8 @@ public class GameState {
     int getScore() {
         return score;
     }
-    
-    void setScore(int newScore){
+
+    void setScore(int newScore) {
         score = newScore;
     }
 
@@ -215,27 +221,27 @@ public class GameState {
         }
     }
 
-    boolean getIsLit(){
+    boolean getIsLit() {
         return isLit;
     }
-    
-    void setIsLit(Boolean setLit){
+
+    void setIsLit(Boolean setLit) {
         isLit = setLit;
     }
-    
+
     boolean getIsDone() {
         return isDone;
     }
-    
+
     boolean getIsWon() {
         return isWon;
     }
-    
+
     void setIsWon() {
         isDone = true;
         isWon = true;
     }
-    
+
     void setIsLost() {
         isDone = true;
         isWon = false;

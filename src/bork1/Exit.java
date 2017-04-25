@@ -43,7 +43,7 @@ public class Exit {
         dungeon file itself, detected when trying to read this room.
         * @author not jmambert
      */
-    Exit(Scanner s, Dungeon d) throws NoExitException,
+    Exit(Scanner s, Dungeon d, Boolean initState) throws NoExitException,
         Dungeon.IllegalDungeonFormatException {
 
         init();
@@ -54,7 +54,12 @@ public class Exit {
         src = d.getRoom(srcTitle);
         dir = s.nextLine();
         dest = d.getRoom(s.nextLine());
-        locked = s.nextLine().equals("Locked: t");
+        String lock = s.nextLine();
+        if(initState){
+        locked = lock.equals("Locked: t");
+        } else {
+            locked = false;
+        }
         
         // I'm an Exit object. Great. Add me as an exit to my source Room too,
         // though.

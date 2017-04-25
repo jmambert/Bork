@@ -116,6 +116,12 @@ public class Room {
     void storeState(PrintWriter w) throws IOException {
         w.println(title + ":");
         w.println("beenHere=" + beenHere);
+        w.println("isDark=" + getIsDark());
+        for (Exit e : exits) {
+            if (e.getLockState()) {
+            w.println(e.getDir());
+        }
+        }
         if (contents.size() > 0) {
             w.print(CONTENTS_STARTER);
             for (int i = 0; i < contents.size() - 1; i++) {
@@ -134,8 +140,18 @@ public class Room {
             throw new GameState.IllegalSaveFormatException("No beenHere.");
         }
         beenHere = Boolean.valueOf(line.substring(line.indexOf("=") + 1));
+        line = s.nextLine();
+        if (!line.startsWith("isDark")) {
+            throw new GameState.IllegalSaveFormatException("No isDark.");
+        }
+        isDark = Boolean.valueOf(line.substring(line.indexOf("=") + 1));
 
         line = s.nextLine();
+        while(!line.startsWith(CONTENTS_STARTER) && !line.equals("---")) {
+            getExit(line).setLockState(true);
+            line = s.nextLine();
+        }
+        
         if (line.startsWith(CONTENTS_STARTER)) {
             String itemsList = line.substring(CONTENTS_STARTER.length());
             String[] itemNames = itemsList.split(",");
